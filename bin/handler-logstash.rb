@@ -7,8 +7,8 @@
 #
 # Designed to take sensu events, transform them into logstash JSON events
 # and then either ship them to a redis server, or send them to a logstash
-# instance for logstash to index. This also generates a tag with either 
-# 'sensu-ALERT' or 'sensu-RECOVERY' so that searching inside of logstash 
+# instance for logstash to index. This also generates a tag with either
+# 'sensu-ALERT' or 'sensu-RECOVERY' so that searching inside of logstash
 # can be a little easier.
 #
 # Written by Zach Dunn -- @SillySophist or http://github.com/zadunn
@@ -24,6 +24,9 @@ require 'socket'
 require 'time'
 require 'json'
 
+#
+# Logstash Handler
+#
 class LogstashHandler < Sensu::Handler
   def event_name
     @event['client']['name'] + '/' + @event['check']['name']
@@ -33,10 +36,10 @@ class LogstashHandler < Sensu::Handler
     @event['action'].eql?('resolve') ? 'RESOLVE' : 'ALERT'
   end
 
+  # rubocop:disable Metrics/AbcSize
   def handle
-    time = Time.now.utc.iso8601
     logstash_msg = {
-      :@timestamp    => time,
+      :@timestamp    => Time.now.utc.iso8601,
       :@version      => 1,
       :source        => ::Socket.gethostname,
       :tags          => ["sensu-#{action_to_string}"],
@@ -51,6 +54,7 @@ class LogstashHandler < Sensu::Handler
       :occurrences   => @event['occurrences'],
       :action        => @event['action']
     }
+
     logstash_msg[:type] = settings['logstash']['type'] if settings['logstash'].key?('type')
 
     case settings['logstash']['output']
