@@ -5,10 +5,11 @@
 # Heavily inspried (er, copied from) the GELF Handler writeen by
 # Joe Miller.
 #
-# Designed to take sensu events, transform them into logstah JSON events
-# and ship them to a redis server for logstash to index.  This also
-# generates a tag with either 'sensu-ALERT' or 'sensu-RECOVERY' so that
-# searching inside of logstash can be a little easier.
+# Designed to take sensu events, transform them into logstash JSON events
+# and then either ship them to a redis server, or send them to a logstash
+# instance for logstash to index. This also generates a tag with either 
+# 'sensu-ALERT' or 'sensu-RECOVERY' so that searching inside of logstash 
+# can be a little easier.
 #
 # Written by Zach Dunn -- @SillySophist or http://github.com/zadunn
 #
