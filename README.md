@@ -5,17 +5,16 @@
 [![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash/badges/gpa.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash)
 [![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash/badges/coverage.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash)
 [![Dependency Status](https://gemnasium.com/sensu-plugins/sensu-plugins-logstash.svg)](https://gemnasium.com/sensu-plugins/sensu-plugins-logstash)
+## Functionality
 
 ## Functionality
 
 ## Files
  * bin/handler-logstash
- *
- *
- *
 
 ## Usage
 
+**handler-logstash** 
 ```
 {
   "logstash": {
@@ -44,7 +43,7 @@ You can also download the key from /certs/ within each repository.
 
 #### Bundler
 
-Add *sensu-plugins-disk-checks* to your Gemfile and run `bundle install` or `bundle update`
+Add *sensu-plugins-logstash* to your Gemfile and run `bundle install` or `bundle update`
 
 #### Chef
 
