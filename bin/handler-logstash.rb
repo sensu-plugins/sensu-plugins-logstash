@@ -48,7 +48,7 @@ class LogstashHandler < Sensu::Handler
     @event['action'].eql?('resolve') ? 'RESOLVE' : 'ALERT'
   end
 
-  def handle
+  def handle # rubocop:disable all
     time = Time.now.utc.iso8601
     logstash_msg = {
       :@timestamp    => time,
