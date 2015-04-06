@@ -5,7 +5,6 @@
 [![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash/badges/gpa.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash)
 [![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash/badges/coverage.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash)
 [![Dependency Status](https://gemnasium.com/sensu-plugins/sensu-plugins-logstash.svg)](https://gemnasium.com/sensu-plugins/sensu-plugins-logstash)
-## Functionality
 
 ## Functionality
 
@@ -14,7 +13,7 @@
 
 ## Usage
 
-**handler-logstash** 
+**handler-logstash**
 ```
 {
   "logstash": {
