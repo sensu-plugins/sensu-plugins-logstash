@@ -21,7 +21,7 @@
 # USAGE:
 #
 # NOTES:
-#   Heavily inspried (er, copied from) the GELF Handler writeen by
+#   Heavily inspried (er, copied from) the GELF Handler written by
 #   Joe Miller.
 #
 # LICENSE:
