@@ -5,7 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash/badges/gpa.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash)
 [![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash/badges/coverage.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-logstash)
 [![Dependency Status](https://gemnasium.com/sensu-plugins/sensu-plugins-logstash.svg)](https://gemnasium.com/sensu-plugins/sensu-plugins-logstash)
-[ ![Codeship Status for sensu-plugins/sensu-plugins-logstash](https://codeship.com/projects/a27fccf0-db96-0132-cb23-0eed4ec53b27/status?branch=master)](https://codeship.com/projects/79668)
+[![Codeship Status for sensu-plugins/sensu-plugins-logstash](https://codeship.com/projects/a27fccf0-db96-0132-cb23-0eed4ec53b27/status?branch=master)](https://codeship.com/projects/79668)
 
 ## Functionality
 
