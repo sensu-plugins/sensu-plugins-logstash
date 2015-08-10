@@ -61,23 +61,23 @@ class LogstashHandler < Sensu::Handler
     end
   end
 
-  def handle # rubocop:disable all
+  def handle
     time = Time.now.utc.iso8601
     logstash_msg = {
-      :@timestamp    => time, # rubocop:disable Style/HashSyntax
-      :@version      => 1, # rubocop:disable Style/HashSyntax
-      :source        => ::Socket.gethostname, # rubocop:disable Style/HashSyntax
-      :tags          => ["sensu-#{action_to_string}"], # rubocop:disable Style/HashSyntax
-      :message       => @event['check']['output'], # rubocop:disable Style/HashSyntax
-      :host          => @event['client']['name'], # rubocop:disable Style/HashSyntax
-      :timestamp     => @event['check']['issued'], # rubocop:disable Style/HashSyntax
-      :address       => @event['client']['address'], # rubocop:disable Style/HashSyntax
-      :check_name    => @event['check']['name'], # rubocop:disable Style/HashSyntax
-      :command       => @event['check']['command'], # rubocop:disable Style/HashSyntax
-      :status        => event_status, # rubocop:disable Style/HashSyntax
-      :flapping      => @event['check']['flapping'], # rubocop:disable Style/HashSyntax
-      :occurrences   => @event['occurrences'], # rubocop:disable Style/HashSyntax
-      :action        => @event['action'] # rubocop:disable Style/HashSyntax
+      :@timestamp    => time,
+      :@version      => 1,
+      :source        => ::Socket.gethostname,
+      :tags          => ["sensu-#{action_to_string}"],
+      :message       => @event['check']['output'],
+      :host          => @event['client']['name'],
+      :timestamp     => @event['check']['issued'],
+      :address       => @event['client']['address'],
+      :check_name    => @event['check']['name'],
+      :command       => @event['check']['command'],
+      :status        => event_status,
+      :flapping      => @event['check']['flapping'],
+      :occurrences   => @event['occurrences'],
+      :action        => @event['action']
     }
     logstash_msg[:type] = settings['logstash']['type'] if settings['logstash'].key?('type')
 

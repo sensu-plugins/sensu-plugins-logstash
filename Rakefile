@@ -1,8 +1,8 @@
 require 'bundler/gem_tasks'
-require 'rspec/core/rake_task'
-require 'yard'
 require 'github/markup'
 require 'rubocop/rake_task'
+require 'rspec/core/rake_task'
+require 'yard'
 require 'redcarpet'
 require 'yard/rake/yardoc_task'
 
