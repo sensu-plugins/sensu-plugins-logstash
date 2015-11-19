@@ -80,7 +80,8 @@ class LogstashHandler < Sensu::Handler
       :action        => @event['action']
     }
     logstash_msg[:type] = settings['logstash']['type'] if settings['logstash'].key?('type')
-
+# Sending logstash_msn as Json
+    logstash_msg = JSON.pretty_generate(logstash_msg)
     case settings['logstash']['output']
     when 'redis'
       redis = Redis.new(host: settings['logstash']['server'], port: settings['logstash']['port'])
