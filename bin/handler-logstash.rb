@@ -89,6 +89,10 @@ class LogstashHandler < Sensu::Handler
       socket = UDPSocket.new
       socket.send(JSON.generate(logstash_msg), 0, settings['logstash']['server'], settings['logstash']['port'])
       socket.close
+    when 'tcp'
+      socket = TCPSocket.new(settings['logstash']['server'], settings['logstash']['port'])
+      socket.puts(JSON.generate(logstash_msg))
+      socket.close
     end
   end
 end
