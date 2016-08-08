@@ -6,6 +6,10 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ## [Unreleased]
 - nothing
 
+## [0.0.5] - 2016-08-08
+### Changed
+- updated sensu-plugin gem to 1.3.0
+
 ## [0.0.4] - 2015-09-29
 - fixed JSON generation for UDP in handler-logstash.rb
 
