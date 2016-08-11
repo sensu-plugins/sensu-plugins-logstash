@@ -21,7 +21,13 @@
     "port": 6379,
     "list": "logstash",
     "type": "sensu-logstash",
-    "output": "redis"
+    "output": "redis",
+    "custom": {
+      "thisFieldWillBeMergedIntoTheTopLevelOfOutgoingJSON": {
+        "metadata": "some metadata",
+        "moreMetadata": 42
+      }
+    }
   }
 }
 ```

@@ -81,6 +81,9 @@ class LogstashHandler < Sensu::Handler
     }
     logstash_msg[:type] = settings['logstash']['type'] if settings['logstash'].key?('type')
 
+    # merge into the outgoing logstash message (at the top level) any JSON config defined under settings['logstash']['custom']
+    logstash_msg = logstash_msg.merge(settings['logstash']['custom']) if settings['logstash'].key?('custom') && !settings['logstash']['custom'].empty?
+
     case settings['logstash']['output']
     when 'redis'
       redis = Redis.new(host: settings['logstash']['server'], port: settings['logstash']['port'])
