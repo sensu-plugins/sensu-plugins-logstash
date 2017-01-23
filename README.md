@@ -17,11 +17,20 @@
 ```
 {
   "logstash": {
-    "server": "redis.example.tld",
-    "port": 6379,
+    "endpoint": [
+      {
+        "address": "host1.example.tld",
+        "port": 5000,
+        "output": "redis"
+      },
+      {
+        "address": "host2.example.tld",
+        "port": 5001,
+        "output": "logstash"
+      }
+    ],
     "list": "logstash",
     "type": "sensu-logstash",
-    "output": "redis",
     "custom": {
       "thisFieldWillBeMergedIntoTheTopLevelOfOutgoingJSON": {
         "metadata": "some metadata",

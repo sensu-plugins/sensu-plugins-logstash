@@ -3,7 +3,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
-## [Unreleased]
+## [1.0.0] - 2017-01-23
+- Added support to send to multiple endpoints
 
 ## [0.1.0] - 2016-08-10
 - changed sensu-plugin dependecy from `= 1.2.0` to `~> 1.2`
