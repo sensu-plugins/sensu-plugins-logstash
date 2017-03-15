@@ -7,8 +7,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [0.1.1] - 2017-03-15
 - changed json dependency from '= 1.8.3' to '< 2.0.0'
-- handler-logstash.rb now merges value of `custom` handler definition
-  attribute into outgoing messages, if provided.
+- handler-logstash.rb now merges value of `custom` attribute into
+  outgoing messages, if provided.
 
 ## [0.1.0] - 2016-08-10
 - changed sensu-plugin dependecy from `= 1.2.0` to `~> 1.2`
@@ -30,7 +30,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/0.1.1...HEAD
+[0.1.1]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/0.0.4...0.1.0
 [0.0.4]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/0.0.3...0.0.4
 [0.0.3]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/0.0.2...0.0.3
