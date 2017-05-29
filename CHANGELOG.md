@@ -4,6 +4,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Added
+- testing on ruby 2.3
+
+### Breaking Changes
+- dropped ruby 1.9 support
+- Added support to send to multiple endpoints
+
+## [0.1.1] - 2017-03-15
+- changed json dependency from '= 1.8.3' to '< 2.0.0'
 
 ## [0.1.1] - 2017-03-15
 - changed json dependency from '= 1.8.3' to '< 2.0.0'

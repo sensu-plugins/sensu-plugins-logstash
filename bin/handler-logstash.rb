@@ -84,18 +84,20 @@ class LogstashHandler < Sensu::Handler
     # merge into the outgoing logstash message (at the top level) any JSON config defined under settings['logstash']['custom']
     logstash_msg = logstash_msg.merge(settings['logstash']['custom']) if settings['logstash'].key?('custom') && !settings['logstash']['custom'].empty?
 
-    case settings['logstash']['output']
-    when 'redis'
-      redis = Redis.new(host: settings['logstash']['server'], port: settings['logstash']['port'])
-      redis.lpush(settings['logstash']['list'], logstash_msg.to_json)
-    when 'udp'
-      socket = UDPSocket.new
-      socket.send(JSON.generate(logstash_msg), 0, settings['logstash']['server'], settings['logstash']['port'])
-      socket.close
-    when 'tcp'
-      socket = TCPSocket.new(settings['logstash']['server'], settings['logstash']['port'])
-      socket.puts(JSON.generate(logstash_msg))
-      socket.close
+    settings['logstash']['endpoint'].each do |endpoint|
+      case endpoint['output']
+      when 'redis'
+        redis = Redis.new(host: endpoint['address'], port: endpoint['port'])
+        redis.lpush(settings['logstash']['list'], logstash_msg.to_json)
+      when 'udp'
+        socket = UDPSocket.new
+        socket.send(JSON.generate(logstash_msg), 0, endpoint['address'], endpoint['port'])
+        socket.close
+      when 'tcp'
+        socket = TCPSocket.new(endpoint['address'], endpoint['port'])
+        socket.puts(JSON.generate(logstash_msg))
+        socket.close
+      end
     end
   end
 end
