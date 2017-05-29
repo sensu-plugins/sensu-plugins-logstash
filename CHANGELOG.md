@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+## [1.0.0] - 2017-05-29
 ### Added
 - testing on ruby 2.3
 
@@ -39,7 +40,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/0.1.1...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/0.1.1...1.0.0
 [0.1.1]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/0.0.4...0.1.0
 [0.0.4]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/0.0.3...0.0.4
