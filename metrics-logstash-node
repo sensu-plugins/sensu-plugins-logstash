@@ -94,7 +94,6 @@ class ESMetrics < Sensu::Plugin::Metric::CLI::Graphite
   end
 
   def run
-
     stats = get_es_resource('/_node/stats')
 
     timestamp = Time.now.to_i
@@ -114,7 +113,7 @@ class ESMetrics < Sensu::Plugin::Metric::CLI::Graphite
     metrics['process.peak_open_file_descriptors'] = node['process']['peak_open_file_descriptors']
     metrics['process.max_file_descriptors'] = node['process']['max_file_descriptors']
 
-    node['pipeline']['events'].each do |key,value|
+    node['pipeline']['events'].each do |key, value|
       metrics["pipeline.events.#{key}"] = value
     end
 
@@ -130,13 +129,13 @@ class ESMetrics < Sensu::Plugin::Metric::CLI::Graphite
       metrics["pipeline.plugins.filters.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
       metrics["pipeline.plugins.filters.#{item['id']}.events.duration_in_millis"] = item['events']['duration_in_millis'].to_i || 0
       metrics["pipeline.plugins.filters.#{item['id']}.matches"] = item['matches'].to_i if item.key?('matches')
-    end 
+    end
 
     node['pipeline']['plugins']['outputs'].each do |item|
       item['events'] = {} unless item.key?('events')
       metrics["pipeline.plugins.outputs.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
       metrics["pipeline.plugins.outputs.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
-    end 
+    end
 
     metrics.each do |k, v|
       output([config[:scheme], k].join('.'), v, timestamp)
