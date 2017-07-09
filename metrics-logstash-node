@@ -93,8 +93,7 @@ class ESMetrics < Sensu::Plugin::Metric::CLI::Graphite
     warning 'Connection timed out'
   end
   
-  # rubocop:disable Metrics/AbcSize
-  def run
+  def run # rubocop:disable Metrics/AbcSize
     stats = get_es_resource('/_node/stats')
 
     timestamp = Time.now.to_i
@@ -143,6 +142,5 @@ class ESMetrics < Sensu::Plugin::Metric::CLI::Graphite
     end
     ok
   end
-  # rubocop:enable Metrics/AbcSize
   
 end
