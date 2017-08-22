@@ -1,10 +1,10 @@
 #! /usr/bin/env ruby
 #
-#   logstash-node-metrics
+#   metrics-logstash-node
 #
 # DESCRIPTION:
-#   This plugin uses the Logstash API to collect metrics, producing a JSON
-#   document which is outputted to STDOUT. An exit status of 0 indicates
+#   This plugin uses the Logstash node info API to collect metrics, producing a
+#   JSON document which is outputted to STDOUT. An exit status of 0 indicates
 #   the plugin has successfully collected and produced.
 #
 # OUTPUT:
@@ -35,35 +35,35 @@ require 'json'
 require 'base64'
 
 #
-# ES Node Metrics
+# Logstash Node Metrics
 #
-class ESMetrics < Sensu::Plugin::Metric::CLI::Graphite
+class LogstashNodeMetrics < Sensu::Plugin::Metric::CLI::Graphite
   option :scheme,
-         description: 'Metric naming scheme, text to prepend to queue_name.metric',
+         description: 'Metric naming scheme, text to prepend to metrics',
          short: '-s SCHEME',
          long: '--scheme SCHEME',
          default: "#{Socket.gethostname}.logstash"
 
   option :host,
-         description: 'Elasticsearch server host.',
+         description: 'Logstash server host',
          short: '-h HOST',
          long: '--host HOST',
          default: 'localhost'
 
   option :port,
-         description: 'Elasticsearch port',
+         description: 'Logstash monitoring port',
          short: '-p PORT',
          long: '--port PORT',
          proc: proc(&:to_i),
          default: 9600
 
   option :user,
-         description: 'Elasticsearch User',
+         description: 'Logstash user',
          short: '-u USER',
          long: '--user USER'
 
   option :password,
-         description: 'Elasticsearch Password',
+         description: 'Logstash password',
          short: '-P PASS',
          long: '--password PASS'
 
@@ -72,7 +72,7 @@ class ESMetrics < Sensu::Plugin::Metric::CLI::Graphite
          short: '-e',
          long: '--https'
 
-  def get_es_resource(resource)
+  def get_logstash_resource(resource)
     headers = {}
     if config[:user] && config[:password]
       auth = 'Basic ' + Base64.encode64("#{config[:user]}:#{config[:password]}").chomp
@@ -94,7 +94,7 @@ class ESMetrics < Sensu::Plugin::Metric::CLI::Graphite
   end
 
   def run # rubocop:disable Metrics/AbcSize
-    stats = get_es_resource('/_node/stats')
+    stats = get_logstash_resource('/_node/stats')
 
     timestamp = Time.now.to_i
     node = stats
