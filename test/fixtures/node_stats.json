@@ -1,0 +1,385 @@
+{
+  "host": "node01.eu-west-1.compute.internal",
+  "version": "5.6.1",
+  "http_address": "0.0.0.0:9600",
+  "id": "5b9215ad-c821-44a5-b64c-f76e2d9e90a1",
+  "name": "node01.eu-west-1.compute.internal",
+  "jvm": {
+    "threads": {
+      "count": 104,
+      "peak_count": 106
+    },
+    "mem": {
+      "heap_used_percent": 34,
+      "heap_committed_in_bytes": 2112618496,
+      "heap_max_in_bytes": 2112618496,
+      "heap_used_in_bytes": 739402816,
+      "non_heap_used_in_bytes": 106179648,
+      "non_heap_committed_in_bytes": 113659904,
+      "pools": {
+        "survivor": {
+          "peak_used_in_bytes": 34865152,
+          "used_in_bytes": 21278072,
+          "peak_max_in_bytes": 34865152,
+          "max_in_bytes": 34865152,
+          "committed_in_bytes": 34865152
+        },
+        "old": {
+          "peak_used_in_bytes": 1399042240,
+          "used_in_bytes": 693960584,
+          "peak_max_in_bytes": 1798569984,
+          "max_in_bytes": 1798569984,
+          "committed_in_bytes": 1798569984
+        },
+        "young": {
+          "peak_used_in_bytes": 279183360,
+          "used_in_bytes": 24164160,
+          "peak_max_in_bytes": 279183360,
+          "max_in_bytes": 279183360,
+          "committed_in_bytes": 279183360
+        }
+      }
+    },
+    "gc": {
+      "collectors": {
+        "old": {
+          "collection_time_in_millis": 261,
+          "collection_count": 3
+        },
+        "young": {
+          "collection_time_in_millis": 4733,
+          "collection_count": 118
+        }
+      }
+    },
+    "uptime_in_millis": 87889
+  },
+  "process": {
+    "open_file_descriptors": 217,
+    "peak_open_file_descriptors": 219,
+    "max_file_descriptors": 16384,
+    "mem": {
+      "total_virtual_in_bytes": 6245580800
+    },
+    "cpu": {
+      "total_in_millis": 115650,
+      "percent": 17,
+      "load_average": {
+        "1m": 1.52,
+        "5m": 1.52,
+        "15m": 1.26
+      }
+    }
+  },
+  "pipeline": {
+    "events": {
+      "duration_in_millis": 20546056,
+      "in": 9840486,
+      "out": 9820476,
+      "filtered": 9835476,
+      "queue_push_duration_in_millis": 95101135
+    },
+    "plugins": {
+      "inputs": [
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-30",
+          "events": {
+            "out": 447,
+            "queue_push_duration_in_millis": 1162712
+          },
+          "name": "tcp"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-22",
+          "events": {
+            "out": 9006902,
+            "queue_push_duration_in_millis": 40191012
+          },
+          "name": "udp"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-15",
+          "events": {
+            "out": 92,
+            "queue_push_duration_in_millis": 68064
+          },
+          "name": "log4j"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-5",
+          "events": {
+            "out": 2092,
+            "queue_push_duration_in_millis": 2483106
+          },
+          "connections": 2111,
+          "name": "syslog",
+          "messages_received": 2092
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-34",
+          "events": {
+            "out": 27522,
+            "queue_push_duration_in_millis": 18203518
+          },
+          "connections": 3084,
+          "name": "syslog",
+          "messages_received": 27522
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-14",
+          "events": {
+            "out": 220920,
+            "queue_push_duration_in_millis": 4288936
+          },
+          "connections": 2188,
+          "name": "syslog",
+          "messages_received": 220920
+        }
+      ],
+      "filters": [
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-25",
+          "events": {
+            "duration_in_millis": 135375,
+            "in": 9153309,
+            "out": 9153309
+          },
+          "matches": 9153099,
+          "name": "date"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-7",
+          "events": {
+            "duration_in_millis": 6,
+            "in": 2092,
+            "out": 0
+          },
+          "name": "kv"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-6",
+          "events": {
+            "duration_in_millis": 113,
+            "in": 2092,
+            "out": 0
+          },
+          "name": "drop"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-3",
+          "events": {
+            "duration_in_millis": 17569,
+            "in": 365229,
+            "out": 365229
+          },
+          "name": "mutate"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-9",
+          "events": {
+            "duration_in_millis": 8,
+            "in": 0,
+            "out": 0
+          },
+          "name": "urldecode"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-19",
+          "events": {
+            "duration_in_millis": 16778,
+            "in": 219037,
+            "out": 219037
+          },
+          "matches": 218945,
+          "failures": 92,
+          "name": "date"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-26",
+          "events": {
+            "duration_in_millis": 530388,
+            "in": 9153309,
+            "out": 9153309
+          },
+          "name": "kv"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-16",
+          "events": {
+            "duration_in_millis": 133,
+            "in": 1887,
+            "out": 0
+          },
+          "name": "drop"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-17",
+          "events": {
+            "duration_in_millis": 12957,
+            "in": 220924,
+            "out": 219037
+          },
+          "matches": 12,
+          "failures": 219025,
+          "patterns_per_field": {
+            "message": 1
+          },
+          "name": "grok"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-35",
+          "events": {
+            "duration_in_millis": 2042,
+            "in": 27521,
+            "out": 27521
+          },
+          "failures": 27521,
+          "patterns_per_field": {
+            "message": 1
+          },
+          "name": "grok"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-8",
+          "events": {
+            "duration_in_millis": 5,
+            "in": 0,
+            "out": 0
+          },
+          "name": "date"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-23",
+          "events": {
+            "duration_in_millis": 238,
+            "in": 2356,
+            "out": 0
+          },
+          "name": "drop"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-10",
+          "events": {
+            "duration_in_millis": 1,
+            "in": 0,
+            "out": 0
+          },
+          "name": "mutate"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-24",
+          "events": {
+            "duration_in_millis": 685454,
+            "in": 9155665,
+            "out": 9153309
+          },
+          "matches": 9153099,
+          "failures": 210,
+          "patterns_per_field": {
+            "message": 1
+          },
+          "name": "grok"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-27",
+          "events": {
+            "duration_in_millis": 605614,
+            "in": 9153309,
+            "out": 9153308
+          },
+          "name": "kv"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-31",
+          "events": {
+            "duration_in_millis": 100,
+            "in": 447,
+            "out": 447
+          },
+          "name": "json"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-37",
+          "events": {
+            "duration_in_millis": 1568,
+            "in": 27521,
+            "out": 27521
+          },
+          "matches": 21929,
+          "name": "date"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-18",
+          "events": {
+            "duration_in_millis": 6026,
+            "in": 219037,
+            "out": 219037
+          },
+          "name": "mutate"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-20",
+          "events": {
+            "duration_in_millis": 555072,
+            "in": 218338,
+            "out": 218338
+          },
+          "name": "elasticsearch"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-33",
+          "events": {
+            "duration_in_millis": 24613,
+            "in": 447,
+            "out": 447
+          },
+          "name": "elasticsearch"
+        },
+        {
+          "id": "4a3d87d316c088c052271a51fae0e37f47a193b9-11",
+          "events": {
+            "duration_in_millis": 0,
+            "in": 0,
+            "out": 0
+          },
+          "name": "elasticsearch"
+        }
+      ]
+    },
+    "reloads": {
+      "last_error": null,
+      "successes": 0,
+      "last_success_timestamp": null,
+      "last_failure_timestamp": null,
+      "failures": 0
+    },
+    "queue": {
+      "type": "memory"
+    },
+    "id": "main"
+  },
+  "reloads": {
+    "successes": 0,
+    "failures": 0
+  },
+  "os": {
+    "cgroup": {
+      "cpuacct": {
+        "usage_nanos": 1934653742368428,
+        "control_group": "/"
+      },
+      "cpu": {
+        "cfs_quota_micros": -1,
+        "control_group": "/",
+        "stat": {
+          "number_of_times_throttled": 0,
+          "time_throttled_nanos": 0,
+          "number_of_elapsed_periods": 0
+        },
+        "cfs_period_micros": 100000
+      }
+    }
+  }
+}
