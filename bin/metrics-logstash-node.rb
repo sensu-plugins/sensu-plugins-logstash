@@ -121,6 +121,7 @@ class LogstashNodeMetrics < Sensu::Plugin::Metric::CLI::Graphite
       item['events'] = {} unless item.key?('events')
       metrics["pipeline.plugins.inputs.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
       metrics["pipeline.plugins.inputs.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
+      metrics["pipeline.plugins.inputs.#{item['id']}.events.queue_push_duration_in_millis"] = item['events']['queue_push_duration_in_millis'].to_i || 0
     end
 
     node['pipeline']['plugins']['filters'].each do |item|
