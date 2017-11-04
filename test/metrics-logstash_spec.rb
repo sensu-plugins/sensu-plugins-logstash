@@ -44,7 +44,7 @@ describe 'MetricsLogstash', '#run' do
 
     check = LogstashNodeMetrics.new(args)
     expect { check.run }.to output(
-      /node01.logstash.pipeline.plugins.outputs.elasticsearch4a3d87d316c088c052271a51fae0e37f47a193b9-33.events.duration_in_millis 24613/
+      /node01.logstash.pipeline.plugins.outputs.elasticsearch.4a3d87d316c088c052271a51fae0e37f47a193b9-33.events.duration_in_millis 24613/
     ).to_stdout.and raise_error(SystemExit)
   end
 end
