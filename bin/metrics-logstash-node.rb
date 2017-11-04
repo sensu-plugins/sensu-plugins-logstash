@@ -119,24 +119,25 @@ class LogstashNodeMetrics < Sensu::Plugin::Metric::CLI::Graphite
 
     node['pipeline']['plugins']['inputs'].each do |item|
       item['events'] = {} unless item.key?('events')
-      metrics["pipeline.plugins.inputs.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
-      metrics["pipeline.plugins.inputs.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
-      metrics["pipeline.plugins.inputs.#{item['id']}.events.queue_push_duration_in_millis"] = item['events']['queue_push_duration_in_millis'].to_i || 0
+      metrics["pipeline.plugins.inputs.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
+      metrics["pipeline.plugins.inputs.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
+      metrics["pipeline.plugins.inputs.#{item['name']}.#{item['id']}.events.queue_push_duration_in_millis"] = \
+        item['events']['queue_push_duration_in_millis'].to_i || 0
     end
 
     node['pipeline']['plugins']['filters'].each do |item|
       item['events'] = {} unless item.key?('events')
-      metrics["pipeline.plugins.filters.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
-      metrics["pipeline.plugins.filters.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
-      metrics["pipeline.plugins.filters.#{item['id']}.events.duration_in_millis"] = item['events']['duration_in_millis'].to_i || 0
-      metrics["pipeline.plugins.filters.#{item['id']}.matches"] = item['matches'].to_i if item.key?('matches')
+      metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
+      metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
+      metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.events.duration_in_millis"] = item['events']['duration_in_millis'].to_i || 0
+      metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.matches"] = item['matches'].to_i if item.key?('matches')
     end
 
     node['pipeline']['plugins']['outputs'].each do |item|
       item['events'] = {} unless item.key?('events')
-      metrics["pipeline.plugins.outputs.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
-      metrics["pipeline.plugins.outputs.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
-      metrics["pipeline.plugins.outputs.#{item['id']}.events.duration_in_millis"] = item['events']['duration_in_millis'].to_i || 0
+      metrics["pipeline.plugins.outputs.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
+      metrics["pipeline.plugins.outputs.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
+      metrics["pipeline.plugins.outputs.#{item['name']}.#{item['id']}.events.duration_in_millis"] = item['events']['duration_in_millis'].to_i || 0
     end
 
     metrics.each do |k, v|
