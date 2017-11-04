@@ -5,7 +5,7 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 
 ## [Unreleased]
 ### Breaking Changes
-- metrics-logstash-node.rb: Added plugin name into pipeline metrics
+- metrics-logstash-node.rb: Added plugin name into pipeline metrics (@Evesy)
 
 ### Changed
 - updated changelog guidelines location (@majormoses)
