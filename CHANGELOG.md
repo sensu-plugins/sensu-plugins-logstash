@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md)
 
 ## [Unreleased]
+
+## [2.0.0] - 2017-11-07
 ### Breaking Changes
 - metrics-logstash-node.rb: Added plugin name into pipeline metrics (@Evesy)
 
@@ -64,7 +66,8 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/1.2.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/1.3.0...2.0.0
 [1.3.0]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/1.1.0...1.1.1
