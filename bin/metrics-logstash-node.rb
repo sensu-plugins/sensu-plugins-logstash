@@ -24,7 +24,7 @@
 #
 # LICENSE:
 #   Copyright 2011 Sonian, Inc <chefs@sonian.net>
-#   Copyright 2016 Philipp Hellmich <phil@hellmi.de>
+#   Copyright 2018 Philipp Hellmich <phil@hellmi.de>
 #   Released under the same terms as Sensu (the MIT license); see LICENSE
 #   for details.
 #
@@ -113,31 +113,66 @@ class LogstashNodeMetrics < Sensu::Plugin::Metric::CLI::Graphite
     metrics['process.peak_open_file_descriptors'] = node['process']['peak_open_file_descriptors']
     metrics['process.max_file_descriptors'] = node['process']['max_file_descriptors']
 
-    node['pipeline']['events'].each do |key, value|
-      metrics["pipeline.events.#{key}"] = value
+    # logstash < 6.0
+    if node.key?('pipeline')
+
+      node['pipeline']['events'].each do |key, value|
+        metrics["pipeline.events.#{key}"] = value
+      end
+
+      node['pipeline']['plugins']['inputs'].each do |item|
+        item['events'] = {} unless item.key?('events')
+        metrics["pipeline.plugins.inputs.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
+        metrics["pipeline.plugins.inputs.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
+        metrics["pipeline.plugins.inputs.#{item['name']}.#{item['id']}.events.queue_push_duration_in_millis"] = item['events']['queue_push_duration_in_millis'].to_i || 0
+      end
+
+      node['pipeline']['plugins']['filters'].each do |item|
+        item['events'] = {} unless item.key?('events')
+        metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
+        metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
+        metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.events.duration_in_millis"] = item['events']['duration_in_millis'].to_i || 0
+        metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.matches"] = item['matches'].to_i if item.key?('matches')
+      end
+
+      node['pipeline']['plugins']['outputs'].each do |item|
+        item['events'] = {} unless item.key?('events')
+        metrics["pipeline.plugins.outputs.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
+        metrics["pipeline.plugins.outputs.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
+      end
+
     end
 
-    node['pipeline']['plugins']['inputs'].each do |item|
-      item['events'] = {} unless item.key?('events')
-      metrics["pipeline.plugins.inputs.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
-      metrics["pipeline.plugins.inputs.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
-      metrics["pipeline.plugins.inputs.#{item['name']}.#{item['id']}.events.queue_push_duration_in_millis"] = \
-        item['events']['queue_push_duration_in_millis'].to_i || 0
-    end
+    # logstash >= 6.0
+    if node.key?('pipelines')
 
-    node['pipeline']['plugins']['filters'].each do |item|
-      item['events'] = {} unless item.key?('events')
-      metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
-      metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
-      metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.events.duration_in_millis"] = item['events']['duration_in_millis'].to_i || 0
-      metrics["pipeline.plugins.filters.#{item['name']}.#{item['id']}.matches"] = item['matches'].to_i if item.key?('matches')
-    end
+      node['pipelines'].keys.each do |pipeline|
+        node['pipelines'][pipeline]['events'].each do |key, value|
+          metrics["pipelines.#{pipeline}.events.#{key}"] = value
+        end
 
-    node['pipeline']['plugins']['outputs'].each do |item|
-      item['events'] = {} unless item.key?('events')
-      metrics["pipeline.plugins.outputs.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
-      metrics["pipeline.plugins.outputs.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
-      metrics["pipeline.plugins.outputs.#{item['name']}.#{item['id']}.events.duration_in_millis"] = item['events']['duration_in_millis'].to_i || 0
+        node['pipelines'][pipeline]['plugins']['inputs'].each do |item|
+          item['events'] = {} unless item.key?('events')
+          metrics["pipelines.#{pipeline}.plugins.inputs.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
+          metrics["pipelines.#{pipeline}.plugins.inputs.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
+          metrics["pipelines.#{pipeline}.plugins.inputs.#{item['name']}.#{item['id']}.events.queue_push_duration_in_millis"] = item['events']['queue_push_duration_in_millis'].to_i || 0
+        end
+
+        node['pipelines'][pipeline]['plugins']['filters'].each do |item|
+          item['events'] = {} unless item.key?('events')
+          metrics["pipelines.#{pipeline}.plugins.filters.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
+          metrics["pipelines.#{pipeline}.plugins.filters.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
+          metrics["pipelines.#{pipeline}.plugins.filters.#{item['name']}.#{item['id']}.events.duration_in_millis"] = item['events']['duration_in_millis'].to_i || 0
+          metrics["pipelines.#{pipeline}.plugins.filters.#{item['name']}.#{item['id']}.matches"] = item['matches'].to_i if item.key?('matches')
+        end
+
+        node['pipelines'][pipeline]['plugins']['outputs'].each do |item|
+          item['events'] = {} unless item.key?('events')
+          metrics["pipelines.#{pipeline}.plugins.outputs.#{item['name']}.#{item['id']}.events.in"] = item['events']['in'].to_i || 0
+          metrics["pipelines.#{pipeline}.plugins.outputs.#{item['name']}.#{item['id']}.events.out"] = item['events']['out'].to_i || 0
+        end
+      end
+
     end
 
     metrics.each do |k, v|
