@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md)
 
 ## [Unreleased]
+
+## [2.1.0] - 2018-03-14
 ### Added
 - Support for Logstash 6.x node stats metrics (@runningman84, @Evesy)
 
@@ -69,6 +71,7 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 - initial release
 
 [Unreleased]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/2.0.0...HEAD
+[2.1.0]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/1.3.0...2.0.0
 [1.3.0]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/sensu-plugins/sensu-plugins-logstash/compare/1.1.1...1.2.0
