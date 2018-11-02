@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.version                = SensuPluginsLogstash::Version::VER_STRING
 
   s.add_runtime_dependency 'json',         '< 2.0.0'
-  s.add_runtime_dependency 'redis',        '3.2.1'
+  s.add_runtime_dependency 'redis',        '= 3.3.5'
   s.add_runtime_dependency 'rest-client',  '2.0.2'
   s.add_runtime_dependency 'sensu-plugin', '~> 1.2'
 
