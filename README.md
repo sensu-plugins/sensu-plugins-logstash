@@ -24,9 +24,14 @@
         "output": "redis"
       },
       {
-        "address": "host2.example.tld",
+        "address": "logstash-host1.example.tld",
         "port": 5001,
-        "output": "logstash"
+        "output": "udp"
+      },
+      {
+        "address": "logstash-host2.example.tld",
+        "port": 5002,
+        "output": "tcp"
       }
     ],
     "list": "logstash",
