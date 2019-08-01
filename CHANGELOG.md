@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md)
 
 ## [Unreleased]
+### Added
+- Support for Logstash 7.3.0+ node stats metrics (@boutetnico)
 
 ## [2.1.0] - 2018-03-14
 ### Added
